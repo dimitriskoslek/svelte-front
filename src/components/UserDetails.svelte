@@ -6,7 +6,6 @@
     export let user
 
     const handleDelete = async(username) => {
-
         const url = 'http://localhost:4000/u/' + username
         const response = await fetch(url, {
             method: 'DELETE',

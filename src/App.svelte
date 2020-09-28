@@ -4,6 +4,7 @@
 	import Tabs from './shared/Tabs.svelte'
 	import CreatePollForm from './components/CreatePollForm.svelte'
 	import PollList from './components/PollList.svelte'
+	import RegisterUserForm from './components/RegisterUserForm.svelte'
 	import UserList from './components/UserList.svelte'
 
 	let items = ['Current Polls', 'Add new Poll', 'Users', 'Add new User']
@@ -14,7 +15,11 @@
 	}
 
 	const handleAdd = (e) => {
-		activeItem = 'Current Polls'
+		if(activeItem === 'Add new Poll'){
+			activeItem = 'Current Polls'
+		} else if(activeItem === 'Add new User'){
+			activeItem = 'Users'
+		}
 	}
 
 </script>
@@ -29,8 +34,8 @@
 		<CreatePollForm on:add={handleAdd} />
 	{:else if activeItem === 'Users'}
 		<UserList />
-	{:else if activeItem === 'Add New User'}
-		<p>test</p>
+	{:else if activeItem === 'Add new User'}
+		<RegisterUserForm on:add={handleAdd} />
 	{/if}
 </main>
 <Footer/>
