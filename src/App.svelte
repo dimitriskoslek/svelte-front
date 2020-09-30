@@ -5,9 +5,10 @@
 	import CreatePollForm from './components/CreatePollForm.svelte'
 	import PollList from './components/PollList.svelte'
 	import RegisterUserForm from './components/RegisterUserForm.svelte'
+	import LoginUserForm from './components/LoginUserForm.svelte'
 	import UserList from './components/UserList.svelte'
 
-	let items = ['Current Polls', 'Add new Poll', 'Users', 'Add new User']
+	let items = ['Current Polls', 'Add new Poll', 'Users', 'Add new User', 'Log in']
 	let activeItem = 'Current Polls'
 
 	const tabChange = (e) => {
@@ -21,7 +22,6 @@
 			activeItem = 'Users'
 		}
 	}
-
 </script>
 
 
@@ -36,6 +36,8 @@
 		<UserList />
 	{:else if activeItem === 'Add new User'}
 		<RegisterUserForm on:add={handleAdd} />
+	{:else if activeItem === 'Log in'}
+		<LoginUserForm />
 	{/if}
 </main>
 <Footer/>
